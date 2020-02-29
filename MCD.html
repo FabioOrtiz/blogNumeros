@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Divisibilidad, criterios y métodos">
+    <meta name="author" content="Fabio Ortiz, Fabian León, Jose Ricaurte, Nicolas, X">
+    <title>Divisibilidad</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/blog/">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="blog.css" rel="stylesheet">
+
+    <!--Javascript-->
+    <script languague="javascript">
+        val = 1;
+        val2 = 1;
+
+        function mostrar() {
+            div = document.getElementById('Teorema_Principal_MCM');
+            if(val%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val=val+1;
+        }
+
+        function mostrar_A() {
+            div = document.getElementById('Propiedad_A');
+            if(val2%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val2=val2+1;
+        }
+    </script>
+  </head>
+  <body>
+  <div class="container">
+  
+
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          <a class="p-2 text-muted" href="Divisibilidad.html">Divisibilidad</a>
+          <a class="p-2 text-muted" href="MCD.html">MCD</a>
+          <a class="p-2 text-muted" href="MCM.html">MCM</a>
+          <a class="p-2 text-muted" href="#">Teorema Fundamental</a>
+          <a class="p-2 text-muted" href="#">Criba de Eratóstenes</a>
+        </nav>
+    </div>
+  </div>
+</div>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <div class="blog-post">
+        <h2 class="blog-post-title" align="center">Máximo Común Divisor (MCD)</h2>
+        
+        <br>
+        <br>
+        <br>
+
+       <b>Definición:</b> <p>
+           <b>a</b> y <b>b</b> son enteros diferentes de 0, se le denomina MCD al mayor número que pertenezca a los divisores tanto de <b>a</b> como de <b>b</b>. Se representa como MCD=(a,b).
+            
+        <div class="p-4 mb-3 bg-light rounded" name="Mostrar_Teorema_Principal_MCM">
+            <a class="btn btn-outline-primary" href="javascript:mostrar();" >Teorema Principal</a>
+        </div>
+
+        <div id="Teorema_Principal_MCM" style="display:none;">
+            <img src ="Imagenes/TeoremaMCD.jpg">
+        </div>
+        
+        <br>
+        <br>
+        <br>
+
+
+        <h5>Condiciones</h5>
+        <p>d=(a,b), si y solamente si, d cumple las propiedades:</p>
+        
+        <ol>
+            <li>d>0.</li>
+            <li>d|a y d|b.</li>
+            <li>Si g|a y g|b entonces g|d.</li>
+          </ol>
+
+        <h5>Ejemplo</h5>
+        
+        <p>¿11 cumple como Máximo Común Divisor de 121 y 99?</p>
+        <ul>
+            <li>¿11 es mayor que 0? <b>Si</b>.</li>
+            <li>¿121 es divisible entre 11? <b>Si </b>. ¿99 es divisible entre 11? <b>Si</b>.</li>
+            <li>¿11979 es divisible entre 121? <b>Si </b>. ¿11979 es divisible entre 99? <b>Si</b>. ¿y 11979 es divisible entre 11? <b>Si</b>.</li>
+        </ul>
+        
+        <p>Por lo tanto, 11 si cumple con las condicones para ser el MCD entre 121 y 99.</p>
+
+        
+      </div><!-- /.blog-post -->
+      
+      <div class="row">
+        <div class="col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Propiedad A</h5>
+                  <p class="card-text">Propiedad A Información</p>
+                  <div id="Propiedad_A" style="display:none;">
+                    Info Propiedad A
+                  </div>
+                  <br>
+                  <br>
+                  <a href="javascript:mostrar_A();"  class="btn btn-primary">Más Información</a>
+                  <div>
+        
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Propiedad A</h5>
+                  <p class="card-text">Propiedad A Información</p>
+                  <div id="Propiedad_A" style="display:none;">
+                    Info Propiedad A
+                  </div>
+                  <br>
+                  <br>
+                  <a href="javascript:mostrar_A();"  class="btn btn-primary">Más Información</a>
+                  <div>
+        
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Propiedad A</h5>
+                  <p class="card-text">Propiedad A Información</p>
+                  <div id="Propiedad_A" style="display:none;">
+                    Info Propiedad A
+                  </div>
+                  <br>
+                  <br>
+                  <a href="javascript:mostrar_A();"  class="btn btn-primary">Más Información</a>
+                  <div>
+        
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Propiedad A</h5>
+                  <p class="card-text">Propiedad A Información</p>
+                  <div id="Propiedad_A" style="display:none;">
+                    Info Propiedad A
+                  </div>
+                  <br>
+                  <br>
+                  <a href="javascript:mostrar_A();"  class="btn btn-primary">Más Información</a>
+                  <div>
+        
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+
+      <div class="blog-post">
+        <h3>Métodos de Calculo del MCD</h3>
+        Utilizaremos el <a href="#">método de Euclides</a> para el cálculo del MCD entre 927 y 651.
+        <div id="Calculo1">
+            <ol>
+                <li>927=651(1)+276</li>
+                <li>651=276(2)+99</li>
+                <li>276=99(2)+78</li>
+                <li>99=78(1)+21</li>
+                <li>78=21(3)+15</li>
+                <li>21=15(1)+6</li>
+                <li>15=6(2)+3</li>
+                <li>6=3(2)</li>
+            </ol>
+        </div>
+        <p>Acorde al cálculo, la respuesta es (927,651)=3</p>
+      </div>
+    </div><!-- /.blog-main -->
+
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 bg-light rounded">
+        <a class="btn btn-outline-primary" href="#">Calculadora de MCD</a>
+      </div>
+    </aside><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<footer class="blog-footer">
+  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+  <p>
+    <a href="#">Back to top</a>
+  </p>
+</footer>
+</body>
+</html>
