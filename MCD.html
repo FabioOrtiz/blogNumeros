@@ -73,6 +73,42 @@
             }
             val2=val2+1;
         }
+
+        function mostrar_B() {
+            div = document.getElementById('Propiedad_B');
+            if(val2%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val2=val2+1;
+        }
+
+        function mostrar_C() {
+            div = document.getElementById('Propiedad_C');
+            if(val2%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val2=val2+1;
+        }
+
+        function mostrar_D() {
+            div = document.getElementById('Propiedad_D');
+            if(val2%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val2=val2+1;
+        }
     </script>
   </head>
   <body>
@@ -110,6 +146,7 @@
 
         <div id="Teorema_Principal_MCM" style="display:none;">
             <img src ="Imagenes/TeoremaMCD.jpg">
+            <p>Imagen del libro "Teoría de Números para Principantes" Rubiano, Gustavo; 2004, p.27-28</p>
         </div>
         
         <br>
@@ -144,10 +181,11 @@
         <div class="col-sm-6">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                  <h5 class="card-title">Propiedad A</h5>
-                  <p class="card-text">Propiedad A Información</p>
+                  <h5 class="card-title">1=ax+by</h5>
                   <div id="Propiedad_A" style="display:none;">
-                    Info Propiedad A
+                    <p class="card-text">
+                      Si (a, b)= 1, debido al teorema principal hay x, y tales que 1=ax+by entonces (a,b)|1 y por lo tanto, (a,b)=1.
+                    </p>
                   </div>
                   <br>
                   <br>
@@ -161,14 +199,13 @@
         <div class="col-sm-6">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                  <h5 class="card-title">Propiedad A</h5>
-                  <p class="card-text">Propiedad A Información</p>
-                  <div id="Propiedad_A" style="display:none;">
-                    Info Propiedad A
+                  <h5 class="card-title">a|bc y (a,b)=1</h5>
+                  <div id="Propiedad_B" style="display:none;">
+                    Si a|bc entonces existe una k tal que ak=bc, como (a,b)=1 se cumple ax+by=1. Por lo tanto: c=c(ax+by)=acx+aky=a(cx+ky) es decir a|c.
                   </div>
                   <br>
                   <br>
-                  <a href="javascript:mostrar_A();"  class="btn btn-primary">Más Información</a>
+                  <a href="javascript:mostrar_B();"  class="btn btn-primary">Más Información</a>
                   <div>
         
                   </div>
@@ -180,14 +217,27 @@
         <div class="col-sm-6">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                  <h5 class="card-title">Propiedad A</h5>
-                  <p class="card-text">Propiedad A Información</p>
-                  <div id="Propiedad_A" style="display:none;">
-                    Info Propiedad A
+                  <h5 class="card-title">P es primo y p|ab, entonces p|a o p|b</h5>
+                  <div id="Propiedad_C" style="display:none;">
+                    <strong>Ejemplo</strong>
+                    <br>
+                    P=13
+                    <br>
+                    a=26
+                    <br>
+                    b=2
+                    <br>
+                    13|(26*2) = 13|52 <strong>Verdadero</strong>
+                    <br>
+                    13|26 <strong>Verdadero</strong>
+                    <br>
+                    13|2 <strong>Falso</strong>
+                    <br>
+                    P cumple con las condiciones
                   </div>
                   <br>
                   <br>
-                  <a href="javascript:mostrar_A();"  class="btn btn-primary">Más Información</a>
+                  <a href="javascript:mostrar_C();"  class="btn btn-primary">Más Información</a>
                   <div>
         
                   </div>
@@ -197,14 +247,23 @@
         <div class="col-sm-6">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                  <h5 class="card-title">Propiedad A</h5>
-                  <p class="card-text">Propiedad A Información</p>
-                  <div id="Propiedad_A" style="display:none;">
-                    Info Propiedad A
+                  <h5 class="card-title">(a,b)=1 y (a,c)=1 entonces (a,bc)=1</h5>
+                  <div id="Propiedad_D" style="display:none;">
+                    1=ax+by
+                    <br>
+                    1=at+cu
+                    <br>
+                    Las anteriores igualdades se deben al teorema principal
+                    <br>
+                    1=(ax+by)(at+cu) == 1=1*1
+                    <br>
+                    1=a(xat+xuc+byt)+bc(yu)
+                    <br>
+                    (a,bc)=1
                   </div>
                   <br>
                   <br>
-                  <a href="javascript:mostrar_A();"  class="btn btn-primary">Más Información</a>
+                  <a href="javascript:mostrar_D();"  class="btn btn-primary">Más Información</a>
                   <div>
         
                   </div>
@@ -231,12 +290,6 @@
         <p>Acorde al cálculo, la respuesta es (927,651)=3</p>
       </div>
     </div><!-- /.blog-main -->
-
-    <aside class="col-md-4 blog-sidebar">
-      <div class="p-4 mb-3 bg-light rounded">
-        <a class="btn btn-outline-primary" href="#">Calculadora de MCD</a>
-      </div>
-    </aside><!-- /.blog-sidebar -->
 
   </div><!-- /.row -->
 
