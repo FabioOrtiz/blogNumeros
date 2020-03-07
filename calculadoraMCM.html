@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <script>
+            var numerosLista = [];
+            a = 0;
+            b = 0;
+            function cantidadNumeros(){
+                numeroEscrito = document.getElementById("Numero").value;
+                numerosLista.push(numeroEscrito);
+                
+            }
+
+            function encontrarMCD(c, d){
+                residuo=0;
+
+                if (c>d){
+                    b = d;
+                }
+
+                if (d>c){
+                    b = c;
+                }
+
+                if (d==c){
+                    b = c;
+                }
+
+                while(b>0){
+                    resto = b;
+                    b = a%b;
+                    a = resto;
+                }
+                return a;
+            }
+
+            function calcular(){
+                s = numerosLista.length;
+                if(s==1){
+                    console.log("ALERT");
+                }
+                if(s>=2){
+                    console.log("L: "+s);
+                    console.log(acortarLista());
+                }
+            }
+            
+            function calculoPrincipal(c){
+                console.log("C: "+ c);
+                s = numerosLista.length;
+                a = numerosLista[s-2];
+                b = numerosLista[s-1];
+                MCM = (a*b)/c;
+                if (MCM<0){
+                    MCM = MCM * -1;
+                }
+
+                return MCM;
+            }
+
+            function acortarLista(){
+                while(numerosLista.length > 1){
+                    s = numerosLista.length;
+                    console.log("PN: "+ numerosLista[s-2]);
+                    console.log("U: "+ numerosLista[s-1]);
+                    nuevoFinal = calculoPrincipal(encontrarMCD(numerosLista[s-1], numerosLista[s-2]));
+                    console.log("R: "+s);
+                    console.log("NF: "+nuevoFinal);
+                    numerosLista.pop();
+                    s = numerosLista.length;
+                    console.log("R1: "+s);
+                    numerosLista[s-1]=nuevoFinal;
+                }
+                return numerosLista[0];
+            }
+
+            function reiniciar(){
+                numerosLista = [];
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" placeholder="Ingrese número al que quiere calcular el MCM" id="Numero" size="40">
+        <button onclick="cantidadNumeros()">Agregar a la lista</button>
+        <button onclick="calcular()">Calcular MCM</button>
+        <button onclick="reiniciar()">Vaciar Lista</button>
+    </body>
+</html>
