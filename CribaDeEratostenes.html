@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Divisibilidad, criterios y métodos">
+    <meta name="author" content="Fabio Ortiz, Fabian León, Jose Ricaurte, Nicolas, X">
+    <title>Criba de Eritostenes</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/blog/">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="blog.css" rel="stylesheet">
+
+    <!--Javascript-->
+    <script languague="javascript">
+        val = 1;
+        val2 = 1;
+
+        function mostrar() {
+            div = document.getElementById('Teorema_Principal_MCM');
+            if(val%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val=val+1;
+        }
+
+        function mostrar_A() {
+            div = document.getElementById('Propiedad_A');
+            if(val2%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val2=val2+1;
+        }
+
+        function mostrar_B() {
+            div = document.getElementById('Propiedad_B');
+            if(val2%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val2=val2+1;
+        }
+
+        function mostrar_C() {
+            div = document.getElementById('Propiedad_C');
+            if(val2%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val2=val2+1;
+        }
+
+        function mostrar_D() {
+            div = document.getElementById('Propiedad_D');
+            if(val2%2==0)
+            {
+                div.style.display = 'none';
+            }
+            else{
+                div.style.display = '';
+            }
+            val2=val2+1;
+        }
+    </script>
+  </head>
+  <body>
+  <div class="container">
+  
+
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          <a class="p-2 text-muted" href="Divisibilidad.html">Divisibilidad</a>
+          <a class="p-2 text-muted" href="MCD.html">MCD</a>
+          <a class="p-2 text-muted" href="MCM.html">MCM</a>
+          <a class="p-2 text-muted" href="Teoremafundamental.html">Teorema Fundamental</a>
+          <a class="p-2 text-muted" href="#">Criba de Eratóstenes</a>
+        </nav>
+    </div>
+  </div>
+</div>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <div class="blog-post">
+        <h2 class="blog-post-title" align="center">Criba de Eratóstenes</h2>
+        
+        <br>
+        <br>
+        <br>
+
+       <b>¿Quién era Eratóstenes?:</b> <p>
+           <br> Fue un matemático, astrónomo y geógrafo griego. Es conocido principalmente por ser la primera persona en calcular la circunferencia de la Tierra, lo que hizo al comparar las altitudes del Sol del mediodía en dos lugares separados por una distancia Norte-Sur.
+		   <p><img src="https://www.mediafire.com/imgbnc.php/5b8bb62625a2456f4822c863fe09ab264deb0e2a438069704d4cf90ba3c543346g.jpg" alt="Imagen de tipo Gif tomada de https://cdnblog-199133.c.cdn77.org/blog/wp-content/uploads/0_Tabla100_inicio.gif" width="250" height="250" /></p>
+		   <br><br>Se le debe un procedimiento, conocido como la Criba de Eratóstenes, para obtener de un modo rápido todos los números primos menores que un número dado. La versión informática de este procedimiento se ha convertido con los años en un método estándar para caracterizar o comparar la eficacia de diferentes lenguajes de programación.
+            
+		<br><br>	
+        <b>¿En qué consiste exactamente la Criba de Erastótenes?</b>
+       <br><br>Es un algoritmo que permite hallar todos los números primos menores que un número natural dado un número cualquiera n. Esto se hace recorriendo una tabla de números usando el siguiente procedimiento:
+		
+		<br><br>
+		
+		<b>1.</b>Empezamos colocando los números del 1 al 100 en una tabla como esta, donde resulta muy fácil observar los patrones que forman los múltiplos de cada número. Marcamos el 1, que no se considera un número primo.
+        <p><img src="https://cdnblog-199133.c.cdn77.org/blog/wp-content/uploads/0_Tabla100_inicio.gif" alt="Imagen de tipo Gif tomada de https://cdnblog-199133.c.cdn77.org/blog/wp-content/uploads/0_Tabla100_inicio.gif" width="406" height="407" /></p>
+		<br><br>
+		
+		<b>2.</b>
+		Primero, buscamos los múltiplos de 2 y los marcamos (exceptuando el 2, que sabemos que sólo tiene como divisores 1 y 2, así que es primo). Todos estos números serán compuestos. 
+		<br><br>
+		<p><span><img src="https://cdnblog-199133.c.cdn77.org/blog/wp-content/uploads/1_Tabla100.gif" width="406" height="407" alt="" /></span></p>
+		<b>3.</b>
+		Ahora, de los que quedan, buscamos los múltiplos de 3 y los marcamos (exceptuando el 3, que es primo). Una manera fácil es ir contando de 3 en 3.
+		<br><br>
+		<p><span><img src="https://cdnblog-199133.c.cdn77.org/blog/wp-content/uploads/2_Multiplos_2.gif" alt="" /></span></p>
+		<b>4.</b>
+		Ahora es el turno de buscar los múltiplos de 5 (de 4 no haría falta, porque todos los múltiplos de 4 también son múltiplos de 2, así que ya los hemos marcado anteriormente). Es fácil encontrarlos, ya que son todos los acabados en 0 o 5. Dejamos el 5 sin marcar, ya que es primo.
+		<br><br>
+		<p><span><img src="https://cdnblog-199133.c.cdn77.org/blog/wp-content/uploads/3_Multiplos_3.gif" width="406" height="407" alt="" /></span></p>
+		<b>5.</b>
+		Vamos ahora con los múltiplos de 7 (los de 6 no hace falta buscarlos, ya que 6 = 2 x 3 y ya hemos buscado los de 2 y 3). Dejamos el 7 sin marcar, ya que es primo.
+		<br><br>
+		<p><span><img src="https://cdnblog-199133.c.cdn77.org/blog/wp-content/uploads/4_Multiplos_5.gif" width="406" height="407" alt="" /></span></p>
+		Como ya solo nos queda buscar los múltiplos de 8, 9 y 10 y éstos son compuestos y múltiplos de números que ya hemos buscado, llegamos al número 11, donde dijimos al principio que debíamos parar.
+
+
+		<div class="p-4 mb-3 bg-light rounded" name="Mostrar_Teorema_Principal_MCM">
+            <a class="btn btn-outline-primary" href="javascript:mostrar();" >Criba de Eratóstenes terminada</a>
+        </div>
+
+        <div id="Teorema_Principal_MCM" style="display:none;">
+            <img src ="https://4.bp.blogspot.com/-dys2oXrlWMw/WbBduEOlqtI/AAAAAAAAFMY/Im69ZnYMe64JYZb-sa49PJYTE_j41vnrQCLcBGAs/s1600/Captura.jpg">
+            <p>Imagen tomada del sitio web: http://matematicosoriano.blogspot.com/2017/11/la-criba-de-eratostenes.html</p>
+        </div>
+
+<footer class="blog-footer">
+  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+  <p>
+    <a href="#">Back to top</a>
+  </p>
+</footer>
+</body>
+</html>
